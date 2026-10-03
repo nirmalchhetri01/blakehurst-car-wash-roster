@@ -1,189 +1,1247 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Blakehurst Car Wash - Staff Roster</title>
+
 <style>
-*{box-sizing:border-box}
-body{margin:0;background:#f3f8fc;color:#17232d;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-header{background:linear-gradient(135deg,#0077c8,#005ea8);color:white;padding:20px 14px}
-h1{margin:0;font-size:22px}.sub{opacity:.9;margin-top:3px}
-.top{display:flex;align-items:center;justify-content:space-between;margin-top:15px;gap:8px}
-button{border:0;border-radius:10px;padding:10px 13px;font-weight:700}
-.nav{background:#ffffff25;color:white}.week{font-size:13px;text-align:center}
-.add{margin-top:10px;background:white;color:#005ea8}
-main{padding:12px;max-width:1200px;margin:auto}
-.card{background:white;border-radius:16px;overflow:auto;box-shadow:0 2px 10px #1232}
-table{border-collapse:collapse;width:100%;min-width:760px}
-th{background:#eaf6ff;color:#31566e;font-size:12px;padding:10px}
-td{border-top:1px solid #dce6ee;padding:8px;text-align:center}
-.name{font-weight:800;text-align:left;position:sticky;left:0;background:white;min-width:145px}
-.time{background:white;border:1px solid #d7e5ee;color:#17435d;min-width:82px}
-.off{background:#f0f2f3;color:#89939a}
-.actions button{padding:5px 7px;font-size:11px;background:#eaf6ff;color:#005ea8;margin-left:3px}
-#login{position:fixed;inset:0;background:linear-gradient(135deg,#0077c8,#005ea8);display:flex;align-items:center;justify-content:center;padding:20px;z-index:5}
-.loginbox{background:white;padding:24px;border-radius:20px;width:100%;max-width:400px}
-.loginbox h2{margin:0 0 5px}.loginbox p{color:#667}
-input{width:100%;padding:13px;margin:6px 0;border:1px solid #ccd9e1;border-radius:10px;font-size:16px}
-.loginbtn{width:100%;background:#0077c8;color:white;margin-top:8px}
-#err{color:#b42318;font-size:13px;margin-top:8px}
-.empty{text-align:center;padding:35px;color:#687780}
-.modal{position:fixed;inset:0;background:#00243c88;display:none;align-items:flex-end;z-index:10}
-.sheet{background:white;width:100%;padding:20px;border-radius:20px 20px 0 0}
-.sheet h3{margin-top:0}.row{display:flex;gap:8px}.row button{flex:1}
-.blue{background:#0077c8;color:white}.gray{background:#edf1f3}.red{background:#fdecec;color:#a32020}
-@media(min-width:700px){.modal{align-items:center}.sheet{max-width:430px;margin:auto;border-radius:20px}}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f3f8fc;
+  color: #17232d;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* HEADER */
+header {
+  background: linear-gradient(135deg, #0077c8, #005ea8);
+  color: white;
+  padding: 20px 14px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.sub {
+  opacity: 0.9;
+  margin-top: 3px;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 15px;
+  gap: 8px;
+}
+
+button {
+  border: 0;
+  border-radius: 10px;
+  padding: 10px 13px;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.nav {
+  background: rgba(255,255,255,0.18);
+  color: white;
+}
+
+.week {
+  font-size: 13px;
+  text-align: center;
+}
+
+.add {
+  margin-top: 10px;
+  background: white;
+  color: #005ea8;
+}
+
+.logout {
+  margin-top: 10px;
+  background: rgba(255,255,255,0.18);
+  color: white;
+  margin-left: 6px;
+}
+
+/* MAIN */
+main {
+  padding: 12px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.card {
+  background: white;
+  border-radius: 16px;
+  overflow: auto;
+  box-shadow: 0 2px 10px rgba(18, 50, 80, 0.15);
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 760px;
+}
+
+th {
+  background: #eaf6ff;
+  color: #31566e;
+  font-size: 12px;
+  padding: 10px;
+}
+
+td {
+  border-top: 1px solid #dce6ee;
+  padding: 8px;
+  text-align: center;
+}
+
+.name {
+  font-weight: 800;
+  text-align: left;
+  position: sticky;
+  left: 0;
+  background: white;
+  min-width: 160px;
+}
+
+.time {
+  background: white;
+  border: 1px solid #d7e5ee;
+  color: #17435d;
+  min-width: 82px;
+}
+
+.off {
+  background: #f0f2f3;
+  color: #89939a;
+}
+
+.actions button {
+  padding: 5px 7px;
+  font-size: 11px;
+  background: #eaf6ff;
+  color: #005ea8;
+  margin-left: 3px;
+}
+
+.empty {
+  padding: 30px;
+  color: #777;
+}
+
+/* LOGIN */
+#loginScreen {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, #0077c8, #005ea8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 5;
+}
+
+.loginbox {
+  background: white;
+  padding: 24px;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.loginbox h2 {
+  margin: 0 0 5px;
+}
+
+.loginbox p {
+  color: #667;
+}
+
+input {
+  width: 100%;
+  padding: 13px;
+  margin: 6px 0;
+  border: 1px solid #ccd9e1;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+.loginbtn {
+  width: 100%;
+  background: #0077c8;
+  color: white;
+  margin-top: 8px;
+}
+
+#loginError {
+  color: #b42318;
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+/* SHIFT MODAL */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,36,60,0.55);
+  display: none;
+  align-items: flex-end;
+  z-index: 10;
+}
+
+.sheet {
+  background: white;
+  width: 100%;
+  padding: 20px;
+  border-radius: 20px 20px 0 0;
+}
+
+.sheet h3 {
+  margin-top: 0;
+}
+
+.row {
+  display: flex;
+  gap: 8px;
+}
+
+.row button {
+  flex: 1;
+}
+
+.blue {
+  background: #0077c8;
+  color: white;
+}
+
+.gray {
+  background: #edf1f3;
+}
+
+@media (min-width: 700px) {
+  .modal {
+    align-items: center;
+  }
+
+  .sheet {
+    max-width: 430px;
+    margin: auto;
+    border-radius: 20px;
+  }
+}
 </style>
 </head>
+
 <body>
 
-<div id="login">
-<div class="loginbox">
-<h2>Blakehurst Car Wash</h2>
-<p>Staff Roster - Admin Login</p>
-<input id="email" type="email" placeholder="Email">
-<input id="pass" type="password" placeholder="Password">
-<button class="loginbtn" onclick="login()">Sign in</button>
-<div id="err"></div>
-</div>
+<!-- LOGIN SCREEN -->
+<div id="loginScreen">
+
+  <div class="loginbox">
+
+    <h2>Blakehurst Car Wash</h2>
+
+    <p>Staff Roster - Admin Login</p>
+
+    <input
+      id="emailInput"
+      type="email"
+      placeholder="Email"
+      autocomplete="username"
+    >
+
+    <input
+      id="passwordInput"
+      type="password"
+      placeholder="Password"
+      autocomplete="current-password"
+    >
+
+    <button id="loginButton" class="loginbtn">
+      Sign in
+    </button>
+
+    <div id="loginError"></div>
+
+  </div>
+
 </div>
 
+
+<!-- HEADER -->
 <header>
-<h1>Blakehurst Car Wash</h1>
-<div class="sub">Staff Roster</div>
-<div class="top">
-<button class="nav" onclick="moveWeek(-7)">‹</button>
-<div class="week" id="week"></div>
-<button class="nav" onclick="moveWeek(7)">›</button>
-</div>
-<div><button class="add" onclick="addStaff()">＋ Add Staff</button>
-<button class="nav" onclick="logout()">Log out</button></div>
+
+  <h1>Blakehurst Car Wash</h1>
+
+  <div class="sub">
+    Staff Roster
+  </div>
+
+  <div class="top">
+
+    <button id="previousWeek" class="nav">
+      ‹
+    </button>
+
+    <div id="weekLabel" class="week">
+      Loading...
+    </div>
+
+    <button id="nextWeek" class="nav">
+      ›
+    </button>
+
+  </div>
+
+  <div>
+
+    <button id="addStaffButton" class="add">
+      ＋ Add Staff
+    </button>
+
+    <button id="logoutButton" class="logout">
+      Log out
+    </button>
+
+  </div>
+
 </header>
 
+
+<!-- ROSTER -->
 <main>
-<div class="card"><table id="table"></table></div>
+
+  <div class="card">
+
+    <table id="rosterTable"></table>
+
+  </div>
+
 </main>
 
-<div class="modal" id="modal">
-<div class="sheet">
-<h3 id="modalTitle">Set shift</h3>
-<input id="time" type="time">
-<div class="row">
-<button class="gray" onclick="closeModal()">Cancel</button>
-<button class="gray" onclick="setOff()">OFF</button>
-<button class="blue" onclick="saveTime()">Save</button>
-</div>
-</div>
+
+<!-- SHIFT EDIT MODAL -->
+<div id="shiftModal" class="modal">
+
+  <div class="sheet">
+
+    <h3 id="modalTitle">
+      Set shift
+    </h3>
+
+    <input
+      id="timeInput"
+      type="time"
+    >
+
+    <div class="row">
+
+      <button
+        id="cancelButton"
+        class="gray"
+      >
+        Cancel
+      </button>
+
+      <button
+        id="offButton"
+        class="gray"
+      >
+        OFF
+      </button>
+
+      <button
+        id="saveTimeButton"
+        class="blue"
+      >
+        Save
+      </button>
+
+    </div>
+
+  </div>
+
 </div>
 
+
+<!-- FIREBASE -->
 <script src="https://www.gstatic.com/firebasejs/11.10.0/firebase-app-compat.js"></script>
+
 <script src="https://www.gstatic.com/firebasejs/11.10.0/firebase-auth-compat.js"></script>
+
 <script src="https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore-compat.js"></script>
 
+
 <script>
-const firebaseConfig={
-apiKey:"AIzaSyCNnCJySpatR3p4cL7pT152cmSfUCEpREk",
-authDomain:"blakehurst-car-wash.firebaseapp.com",
-projectId:"blakehurst-car-wash",
-storageBucket:"blakehurst-car-wash.firebasestorage.app",
-messagingSenderId:"352439384369",
-appId:"1:352439384369:web:ad7dacc434b1793b365810"
+
+/* ==============================
+   FIREBASE CONFIGURATION
+   ============================== */
+
+const firebaseConfig = {
+
+  apiKey: "AIzaSyCNnCJySpatR3p4cL7pT152cmSfUCEpREk",
+
+  authDomain:
+    "blakehurst-car-wash.firebaseapp.com",
+
+  projectId:
+    "blakehurst-car-wash",
+
+  storageBucket:
+    "blakehurst-car-wash.firebasestorage.app",
+
+  messagingSenderId:
+    "352439384369",
+
+  appId:
+    "1:352439384369:web:ad7dacc434b1793b365810"
+
 };
 
+
+/* START FIREBASE */
+
 firebase.initializeApp(firebaseConfig);
-const auth=firebase.auth(),db=firebase.firestore();
-const ref=db.collection("roster").doc("main");
 
-let start=monday(new Date()),data={staff:[]},current={i:-1,k:""};
+const auth = firebase.auth();
 
-function monday(d){
- d=new Date(d);d.setHours(0,0,0,0);
- d.setDate(d.getDate()-((d.getDay()+6)%7));return d
+const db = firebase.firestore();
+
+const rosterRef =
+  db.collection("roster").doc("main");
+
+
+/* ==============================
+   APPLICATION DATA
+   ============================== */
+
+let startDate = getMonday(new Date());
+
+let rosterData = {
+  staff: []
+};
+
+let currentShift = {
+  staffIndex: -1,
+  dateKey: ""
+};
+
+
+/* ==============================
+   HTML ELEMENTS
+   ============================== */
+
+const loginScreen =
+  document.getElementById("loginScreen");
+
+const emailInput =
+  document.getElementById("emailInput");
+
+const passwordInput =
+  document.getElementById("passwordInput");
+
+const loginButton =
+  document.getElementById("loginButton");
+
+const loginError =
+  document.getElementById("loginError");
+
+const weekLabel =
+  document.getElementById("weekLabel");
+
+const rosterTable =
+  document.getElementById("rosterTable");
+
+const shiftModal =
+  document.getElementById("shiftModal");
+
+const modalTitle =
+  document.getElementById("modalTitle");
+
+const timeInput =
+  document.getElementById("timeInput");
+
+
+/* ==============================
+   DATE FUNCTIONS
+   ============================== */
+
+function getMonday(date) {
+
+  const d = new Date(date);
+
+  d.setHours(0, 0, 0, 0);
+
+  const day = d.getDay();
+
+  const difference =
+    (day + 6) % 7;
+
+  d.setDate(
+    d.getDate() - difference
+  );
+
+  return d;
 }
-function dates(){
- return Array.from({length:7},(_,i)=>{
-  let d=new Date(start);d.setDate(d.getDate()+i);return d
- })
+
+
+function getWeekDates() {
+
+  const dates = [];
+
+  for (let i = 0; i < 7; i++) {
+
+    const d = new Date(startDate);
+
+    d.setDate(
+      d.getDate() + i
+    );
+
+    dates.push(d);
+  }
+
+  return dates;
 }
-function key(d){return d.toISOString().slice(0,10)}
-function label(v){
- if(!v)return"OFF";
- let a=v.split(":").map(Number),h=a[0],m=a[1];
- return(h%12||12)+":"+String(m).padStart(2,"0")+" "+(h>=12?"PM":"AM")
+
+
+function dateKey(date) {
+
+  const year =
+    date.getFullYear();
+
+  const month =
+    String(date.getMonth() + 1)
+      .padStart(2, "0");
+
+  const day =
+    String(date.getDate())
+      .padStart(2, "0");
+
+  return `${year}-${month}-${day}`;
 }
-function render(){
- let ds=dates();
- week.textContent=ds[0].toLocaleDateString("en-AU",{day:"numeric",month:"short"})+
- " – "+ds[6].toLocaleDateString("en-AU",{day:"numeric",month:"short"});
- let x="<tr><th>Staff</th>";
- ds.forEach(d=>x+="<th>"+d.toLocaleDateString("en-AU",{weekday:"short"})+
- "<br>"+d.getDate()+"/"+(d.getMonth()+1)+"</th>");
- x+="</tr>";
- if(!data.staff.length)x+='<tr><td colspan="8" class="empty">No staff yet. Tap Add Staff.</td></tr>';
- data.staff.forEach((s,i)=>{
-  x+="<tr><td class=name>"+s.name+
-  '<span class=actions><button onclick="editName('+i+')">Edit</button>'+
-  '<button onclick="removeStaff('+i+')">×</button></span></td>';
-  ds.forEach(d=>{
-   let k=key(d),v=(s.schedule||{})[k]||"";
-   x+='<td><button class="time '+(!v?"off":"")+
-   '" onclick="shift('+i+',\''+k+'\')">'+label(v)+"</button></td>";
+
+
+/* ==============================
+   TIME DISPLAY
+   ============================== */
+
+function formatTime(value) {
+
+  if (!value) {
+    return "OFF";
+  }
+
+  const parts =
+    value.split(":");
+
+  let hour =
+    Number(parts[0]);
+
+  const minute =
+    parts[1];
+
+  const suffix =
+    hour >= 12 ? "PM" : "AM";
+
+  hour =
+    hour % 12 || 12;
+
+  return (
+    hour +
+    ":" +
+    minute +
+    " " +
+    suffix
+  );
+}
+
+
+/* ==============================
+   RENDER ROSTER
+   ============================== */
+
+function renderRoster() {
+
+  const dates =
+    getWeekDates();
+
+  const firstDate =
+    dates[0];
+
+  const lastDate =
+    dates[6];
+
+
+  weekLabel.textContent =
+    firstDate.toLocaleDateString(
+      "en-AU",
+      {
+        day: "numeric",
+        month: "short"
+      }
+    ) +
+    " – " +
+    lastDate.toLocaleDateString(
+      "en-AU",
+      {
+        day: "numeric",
+        month: "short"
+      }
+    );
+
+
+  let html =
+    "<tr>";
+
+  html +=
+    "<th>Staff</th>";
+
+
+  dates.forEach(function(date) {
+
+    html +=
+      "<th>" +
+      date.toLocaleDateString(
+        "en-AU",
+        {
+          weekday: "short"
+        }
+      ) +
+      "<br>" +
+      date.getDate() +
+      "/" +
+      (date.getMonth() + 1) +
+      "</th>";
+
   });
-  x+="</tr>";
- });
- table.innerHTML=x;
+
+
+  html += "</tr>";
+
+
+  if (
+    !rosterData.staff ||
+    rosterData.staff.length === 0
+  ) {
+
+    html +=
+      '<tr><td colspan="8" class="empty">' +
+      "No staff yet. Tap Add Staff." +
+      "</td></tr>";
+
+    rosterTable.innerHTML = html;
+
+    return;
+  }
+
+
+  rosterData.staff.forEach(
+    function(staff, staffIndex) {
+
+      html += "<tr>";
+
+      html +=
+        '<td class="name">' +
+        escapeHtml(staff.name) +
+        '<span class="actions">' +
+
+        '<button onclick="editStaffName(' +
+        staffIndex +
+        ')">Edit</button>' +
+
+        '<button onclick="removeStaff(' +
+        staffIndex +
+        ')">×</button>' +
+
+        "</span>" +
+        "</td>";
+
+
+      dates.forEach(function(date) {
+
+        const key =
+          dateKey(date);
+
+        const value =
+          staff.schedule &&
+          staff.schedule[key]
+            ? staff.schedule[key]
+            : "";
+
+
+        html +=
+          "<td>" +
+
+          '<button class="time ' +
+          (!value ? "off" : "") +
+          '" onclick="openShift(' +
+          staffIndex +
+          ",'" +
+          key +
+          "')\">" +
+
+          formatTime(value) +
+
+          "</button>" +
+
+          "</td>";
+
+      });
+
+
+      html += "</tr>";
+
+    }
+  );
+
+
+  rosterTable.innerHTML =
+    html;
 }
-async function load(){
- let s=await ref.get();
- if(s.exists)data=s.data();
- else await ref.set(data);
- render();
+
+
+/* ==============================
+   SECURITY / HTML ESCAPE
+   ============================== */
+
+function escapeHtml(text) {
+
+  return String(text)
+
+    .replace(/&/g, "&amp;")
+
+    .replace(/</g, "&lt;")
+
+    .replace(/>/g, "&gt;")
+
+    .replace(/"/g, "&quot;")
+
+    .replace(/'/g, "&#039;");
 }
-function moveWeek(n){start.setDate(start.getDate()+n);render()}
-async function login(){
- err.textContent="";
- try{await auth.signInWithEmailAndPassword(email.value.trim(),pass.value)}
- catch(e){err.textContent="Incorrect email or password."}
+
+
+/* ==============================
+   LOAD DATA
+   ============================== */
+
+async function loadRoster() {
+
+  try {
+
+    const snapshot =
+      await rosterRef.get();
+
+
+    if (snapshot.exists) {
+
+      const savedData =
+        snapshot.data();
+
+      rosterData = {
+        staff:
+          Array.isArray(savedData.staff)
+            ? savedData.staff
+            : []
+      };
+
+    } else {
+
+      rosterData = {
+        staff: []
+      };
+
+      await rosterRef.set(
+        rosterData
+      );
+
+    }
+
+
+    renderRoster();
+
+  } catch (error) {
+
+    console.error(
+      "Firestore error:",
+      error
+    );
+
+    loginError.textContent =
+      "Login worked, but the roster database could not be loaded.";
+
+  }
+
 }
-function logout(){auth.signOut()}
-function addStaff(){
- let n=prompt("Staff name:");
- if(n&&n.trim()){data.staff.push({name:n.trim(),schedule:{}});save()}
+
+
+/* ==============================
+   SAVE DATA
+   ============================== */
+
+async function saveRoster() {
+
+  try {
+
+    await rosterRef.set(
+      rosterData
+    );
+
+    renderRoster();
+
+  } catch (error) {
+
+    console.error(
+      "Save error:",
+      error
+    );
+
+    alert(
+      "Could not save the roster. Please check your internet connection."
+    );
+
+  }
+
 }
-function editName(i){
- let n=prompt("Staff name:",data.staff[i].name);
- if(n&&n.trim()){data.staff[i].name=n.trim();save()}
+
+
+/* ==============================
+   LOGIN
+   ============================== */
+
+async function doLogin() {
+
+  loginError.textContent = "";
+
+  const email =
+    emailInput.value.trim();
+
+  const password =
+    passwordInput.value;
+
+
+  if (!email || !password) {
+
+    loginError.textContent =
+      "Please enter your email and password.";
+
+    return;
+  }
+
+
+  loginButton.disabled = true;
+
+  loginButton.textContent =
+    "Signing in...";
+
+
+  try {
+
+    await auth.signInWithEmailAndPassword(
+      email,
+      password
+    );
+
+  } catch (error) {
+
+    console.error(
+      "Login error:",
+      error
+    );
+
+    loginError.textContent =
+      "Incorrect email or password.";
+
+    loginButton.disabled = false;
+
+    loginButton.textContent =
+      "Sign in";
+  }
+
 }
-function removeStaff(i){
- if(confirm("Remove "+data.staff[i].name+"?")){
-  data.staff.splice(i,1);save()
- }
+
+
+/* ==============================
+   LOGOUT
+   ============================== */
+
+function logout() {
+
+  auth.signOut();
+
 }
-function shift(i,k){
- current={i,k};
- modalTitle.textContent=data.staff[i].name+" — "+k;
- time.value=data.staff[i].schedule?.[k]||"";
- modal.style.display="flex";
+
+
+/* ==============================
+   ADD STAFF
+   ============================== */
+
+async function addStaff() {
+
+  const name =
+    prompt("Enter staff name:");
+
+
+  if (
+    name &&
+    name.trim()
+  ) {
+
+    rosterData.staff.push({
+
+      name:
+        name.trim(),
+
+      schedule: {}
+
+    });
+
+
+    await saveRoster();
+
+  }
+
 }
-function closeModal(){modal.style.display="none"}
-async function saveTime(){
- let v=time.value;
- if(!v)return;
- if(!data.staff[current.i].schedule)data.staff[current.i].schedule={};
- data.staff[current.i].schedule[current.k]=v;
- closeModal();await save()
+
+
+/* ==============================
+   EDIT STAFF NAME
+   ============================== */
+
+async function editStaffName(index) {
+
+  const currentName =
+    rosterData.staff[index].name;
+
+
+  const newName =
+    prompt(
+      "Staff name:",
+      currentName
+    );
+
+
+  if (
+    newName &&
+    newName.trim()
+  ) {
+
+    rosterData.staff[index].name =
+      newName.trim();
+
+    await saveRoster();
+
+  }
+
 }
-async function setOff(){
- if(!data.staff[current.i].schedule)data.staff[current.i].schedule={};
- delete data.staff[current.i].schedule[current.k];
- closeModal();await save()
+
+
+/* ==============================
+   REMOVE STAFF
+   ============================== */
+
+async function removeStaff(index) {
+
+  const name =
+    rosterData.staff[index].name;
+
+
+  const confirmed =
+    confirm(
+      "Remove " +
+      name +
+      " from the roster?"
+    );
+
+
+  if (!confirmed) {
+    return;
+  }
+
+
+  rosterData.staff.splice(
+    index,
+    1
+  );
+
+
+  await saveRoster();
+
 }
-async function save(){await ref.set(data);render()}
-auth.onAuthStateChanged(async u=>{
- login.style.display=u?"none":"flex";
- if(u)try{await load()}catch(e){err.textContent="Database access error."}
-});
+
+
+/* ==============================
+   OPEN SHIFT
+   ============================== */
+
+function openShift(
+  staffIndex,
+  key
+) {
+
+  currentShift = {
+
+    staffIndex:
+      staffIndex,
+
+    dateKey:
+      key
+
+  };
+
+
+  const staff =
+    rosterData.staff[
+      staffIndex
+    ];
+
+
+  modalTitle.textContent =
+    staff.name +
+    " — " +
+    key;
+
+
+  const existingValue =
+    staff.schedule &&
+    staff.schedule[key]
+      ? staff.schedule[key]
+      : "";
+
+
+  timeInput.value =
+    existingValue;
+
+
+  shiftModal.style.display =
+    "flex";
+
+}
+
+
+/* ==============================
+   CLOSE MODAL
+   ============================== */
+
+function closeShiftModal() {
+
+  shiftModal.style.display =
+    "none";
+
+}
+
+
+/* ==============================
+   SAVE SHIFT
+   ============================== */
+
+async function saveTime() {
+
+  const value =
+    timeInput.value;
+
+
+  if (!value) {
+
+    alert(
+      "Please choose a time or select OFF."
+    );
+
+    return;
+  }
+
+
+  const staff =
+    rosterData.staff[
+      currentShift.staffIndex
+    ];
+
+
+  if (!staff.schedule) {
+
+    staff.schedule = {};
+
+  }
+
+
+  staff.schedule[
+    currentShift.dateKey
+  ] = value;
+
+
+  closeShiftModal();
+
+  await saveRoster();
+
+}
+
+
+/* ==============================
+   SET OFF
+   ============================== */
+
+async function setOff() {
+
+  const staff =
+    rosterData.staff[
+      currentShift.staffIndex
+    ];
+
+
+  if (!staff.schedule) {
+
+    staff.schedule = {};
+
+  }
+
+
+  delete staff.schedule[
+    currentShift.dateKey
+  ];
+
+
+  closeShiftModal();
+
+  await saveRoster();
+
+}
+
+
+/* ==============================
+   CHANGE WEEK
+   ============================== */
+
+function moveWeek(days) {
+
+  startDate.setDate(
+    startDate.getDate() +
+    days
+  );
+
+  renderRoster();
+
+}
+
+
+/* ==============================
+   BUTTON EVENTS
+   ============================== */
+
+document
+  .getElementById("loginButton")
+  .addEventListener(
+    "click",
+    doLogin
+  );
+
+
+document
+  .getElementById("logoutButton")
+  .addEventListener(
+    "click",
+    logout
+  );
+
+
+document
+  .getElementById("addStaffButton")
+  .addEventListener(
+    "click",
+    addStaff
+  );
+
+
+document
+  .getElementById("previousWeek")
+  .addEventListener(
+    "click",
+    function() {
+      moveWeek(-7);
+    }
+  );
+
+
+document
+  .getElementById("nextWeek")
+  .addEventListener(
+    "click",
+    function() {
+      moveWeek(7);
+    }
+  );
+
+
+document
+  .getElementById("cancelButton")
+  .addEventListener(
+    "click",
+    closeShiftModal
+  );
+
+
+document
+  .getElementById("offButton")
+  .addEventListener(
+    "click",
+    setOff
+  );
+
+
+document
+  .getElementById("saveTimeButton")
+  .addEventListener(
+    "click",
+    saveTime
+  );
+
+
+/* ==============================
+   FIREBASE AUTH STATE
+   ============================== */
+
+auth.onAuthStateChanged(
+  async function(user) {
+
+    if (user) {
+
+      loginScreen.style.display =
+        "none";
+
+      loginError.textContent = "";
+
+      await loadRoster();
+
+    } else {
+
+      loginScreen.style.display =
+        "flex";
+
+      loginButton.disabled =
+        false;
+
+      loginButton.textContent =
+        "Sign in";
+
+      renderRoster();
+
+    }
+
+  }
+);
+
 </script>
+
 </body>
 </html>
