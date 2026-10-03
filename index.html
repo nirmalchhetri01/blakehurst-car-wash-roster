@@ -251,6 +251,8 @@ border-radius:20px;
 }
 
 }
+
+.staff-meta{display:inline-flex;align-items:center;gap:7px;margin-left:8px;vertical-align:middle}.position-badge{display:inline-flex;align-items:center;justify-content:center;padding:3px 7px;border-radius:999px;background:#eaf3ff;color:#1557a6;font-size:11px;font-weight:800}.phone-link{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:#e8f7ef;color:#16834b;text-decoration:none;font-size:16px;font-weight:800;border:1px solid #c9ead8}.staff-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.staff-form-grid .full{grid-column:1/-1}@media(max-width:650px){.staff-form-grid{grid-template-columns:1fr}.staff-form-grid .full{grid-column:auto}}.site-footer{margin-top:28px;padding:24px 18px;border-radius:18px;background:linear-gradient(135deg,#071b36,#0d4f91);color:#fff;text-align:center;box-shadow:0 12px 30px rgba(7,27,54,.16)}.site-footer .slogan{font-size:15px;font-weight:700;line-height:1.5;margin-bottom:16px}.site-footer .footer-title{font-size:12px;text-transform:uppercase;letter-spacing:1px;opacity:.78;margin-bottom:6px}.site-footer .footer-contact{line-height:1.6;font-size:13px;margin-bottom:15px}.site-footer .copyright{font-size:11px;opacity:.7;padding-top:12px;border-top:1px solid rgba(255,255,255,.18)}
 </style>
 </head>
 
@@ -735,7 +737,8 @@ html+="<tr>";
 
 html+=
 '<td class="name">'+
-escapeHtml(staff.name);
+escapeHtml(staff.name)+
+'<span class="staff-meta"><span class="position-badge">'+escapeHtml(staff.position||"W")+'</span>'+(staff.phone?'<a class="phone-link" href="tel:'+staff.phone.replace(/[^0-9+]/g,"")+'" aria-label="Call '+escapeHtml(staff.name)+'">☎</a>':"")+'</span>';
 
 
 /* ADMIN ONLY BUTTONS */
@@ -851,6 +854,8 @@ Array.isArray(saved.staff)
 :[]
 
 };
+
+rosterData.staff.forEach(function(staff){if(!staff.position)staff.position="W";if(typeof staff.phone!=="string")staff.phone=staff.phone?String(staff.phone):"";if(!staff.schedule||typeof staff.schedule!=="object")staff.schedule={};});
 
 }else{
 
@@ -1019,67 +1024,32 @@ auth.signOut();
    ADD STAFF
    ============================ */
 
-async function addStaff(){
-
-if(currentRole!=="admin"){
-return;
+function openStaffModal(index){
+if(currentRole!=="admin") return;
+const editing=index>=0;
+const staff=editing ? rosterData.staff[index] : {name:"",position:"W",phone:""};
+const modal=document.createElement("div");
+modal.style.cssText="position:fixed;inset:0;background:rgba(0,0,0,.58);z-index:9999;display:flex;align-items:center;justify-content:center;padding:18px;";
+const positions=[["S.M","Salesman"],["F.M","Front Manager"],["M","Store Manager"],["W","Worker"],["O","Operator"]];
+const options=positions.map(function(p){return '<option value="'+p[0]+'" '+((staff.position||"W")===p[0]?"selected":"")+'>'+p[0]+' — '+p[1]+'</option>';}).join("");
+modal.innerHTML=`<div style="width:min(520px,100%);background:#fff;border-radius:18px;padding:22px;box-shadow:0 25px 70px rgba(0,0,0,.25);"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;"><div><div style="font-size:20px;font-weight:800;color:#0b2b52;">${editing?"Edit Staff":"Add Staff"}</div><div style="font-size:12px;color:#718096;margin-top:3px;">Staff details shown on the roster.</div></div><button id="closeStaffModal" type="button" style="border:0;background:#eef3f8;border-radius:50%;width:36px;height:36px;font-size:20px;">×</button></div><div class="staff-form-grid"><div class="full"><label style="display:block;font-size:12px;font-weight:700;margin-bottom:6px;">Name</label><input id="staffNameInput" type="text" placeholder="Staff name" style="width:100%;box-sizing:border-box;" value="${escapeHtml(staff.name||"")}"></div><div><label style="display:block;font-size:12px;font-weight:700;margin-bottom:6px;">Position</label><select id="staffPositionInput" style="width:100%;box-sizing:border-box;">${options}</select></div><div><label style="display:block;font-size:12px;font-weight:700;margin-bottom:6px;">Phone number</label><input id="staffPhoneInput" type="tel" placeholder="04xx xxx xxx" style="width:100%;box-sizing:border-box;" value="${escapeHtml(staff.phone||"")}"></div></div><div style="display:flex;gap:10px;justify-content:flex-end;margin-top:20px;"><button id="cancelStaffModal" type="button" style="padding:11px 16px;border:1px solid #d7e0ea;border-radius:10px;background:#fff;">Cancel</button><button id="saveStaffModal" type="button" style="padding:11px 18px;border:0;border-radius:10px;background:#0b63ce;color:#fff;font-weight:800;">${editing?"Save Changes":"Add Staff"}</button></div></div>`;
+document.body.appendChild(modal);
+const close=function(){modal.remove();};
+modal.querySelector("#closeStaffModal").onclick=close; modal.querySelector("#cancelStaffModal").onclick=close;
+modal.querySelector("#saveStaffModal").onclick=async function(){
+const name=modal.querySelector("#staffNameInput").value.trim(); if(!name){alert("Please enter the staff name.");return;}
+const position=modal.querySelector("#staffPositionInput").value; const phone=modal.querySelector("#staffPhoneInput").value.trim();
+if(editing){Object.assign(rosterData.staff[index],{name,position,phone});}else{rosterData.staff.push({name,position,phone,schedule:{}});}
+await saveRoster(); close();
+};
 }
-
-
-const name=
-prompt("Enter staff name:");
-
-
-if(name && name.trim()){
-
-rosterData.staff.push({
-
-name:name.trim(),
-
-schedule:{}
-
-});
-
-
-await saveRoster();
-
-}
-
-}
-
+async function addStaff(){openStaffModal(-1);}
 
 /* ============================
    EDIT STAFF
    ============================ */
 
-async function editStaffName(index){
-
-if(currentRole!=="admin"){
-return;
-}
-
-
-const currentName=
-rosterData.staff[index].name;
-
-
-const newName=
-prompt(
-"Staff name:",
-currentName
-);
-
-
-if(newName && newName.trim()){
-
-rosterData.staff[index].name=
-newName.trim();
-
-await saveRoster();
-
-}
-
-}
+function editStaffName(index){openStaffModal(index);}
 
 
 /* ============================
@@ -1446,5 +1416,7 @@ renderRoster();
 
 </script>
 
+
+<footer class="site-footer"><div class="slogan">We believe in staying until the job is done — that’s why there’s no end time.</div><div class="footer-title">Manager Contact</div><div class="footer-contact">Phone: Not added<br>Email: Not added</div><div class="copyright">© 2026 Blakehurst Car Wash. All rights reserved.<br>Founded &amp; Developed by Nirmal Chhetri</div></footer>
 </body>
 </html>
