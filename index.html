@@ -3,380 +3,404 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Blakehurst Car Wash - Staff Roster</title>
 
 <style>
-* {
-  box-sizing: border-box;
+*{box-sizing:border-box}
+
+body{
+margin:0;
+background:#f3f8fc;
+color:#17232d;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 }
 
-body {
-  margin: 0;
-  background: #f3f8fc;
-  color: #17232d;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+header{
+background:linear-gradient(135deg,#0077c8,#005ea8);
+color:white;
+padding:20px 14px;
 }
 
-/* HEADER */
-header {
-  background: linear-gradient(135deg, #0077c8, #005ea8);
-  color: white;
-  padding: 20px 14px;
+h1{
+margin:0;
+font-size:22px;
 }
 
-h1 {
-  margin: 0;
-  font-size: 22px;
+.sub{
+opacity:.9;
+margin-top:3px;
 }
 
-.sub {
-  opacity: 0.9;
-  margin-top: 3px;
+.top{
+display:flex;
+align-items:center;
+justify-content:space-between;
+margin-top:15px;
+gap:8px;
 }
 
-.top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 15px;
-  gap: 8px;
+button{
+border:0;
+border-radius:10px;
+padding:10px 13px;
+font-weight:700;
+font-size:14px;
 }
 
-button {
-  border: 0;
-  border-radius: 10px;
-  padding: 10px 13px;
-  font-weight: 700;
-  font-size: 14px;
+.nav{
+background:rgba(255,255,255,.18);
+color:white;
 }
 
-.nav {
-  background: rgba(255,255,255,0.18);
-  color: white;
+.week{
+font-size:13px;
+text-align:center;
 }
 
-.week {
-  font-size: 13px;
-  text-align: center;
+.add{
+margin-top:10px;
+background:white;
+color:#005ea8;
 }
 
-.add {
-  margin-top: 10px;
-  background: white;
-  color: #005ea8;
+.logout{
+margin-top:10px;
+background:rgba(255,255,255,.18);
+color:white;
+margin-left:6px;
 }
 
-.logout {
-  margin-top: 10px;
-  background: rgba(255,255,255,0.18);
-  color: white;
-  margin-left: 6px;
+main{
+padding:12px;
+max-width:1200px;
+margin:auto;
 }
 
-/* MAIN */
-main {
-  padding: 12px;
-  max-width: 1200px;
-  margin: auto;
+.card{
+background:white;
+border-radius:16px;
+overflow:auto;
+box-shadow:0 2px 10px rgba(18,50,80,.15);
 }
 
-.card {
-  background: white;
-  border-radius: 16px;
-  overflow: auto;
-  box-shadow: 0 2px 10px rgba(18, 50, 80, 0.15);
+table{
+border-collapse:collapse;
+width:100%;
+min-width:760px;
 }
 
-table {
-  border-collapse: collapse;
-  width: 100%;
-  min-width: 760px;
+th{
+background:#eaf6ff;
+color:#31566e;
+font-size:12px;
+padding:10px;
 }
 
-th {
-  background: #eaf6ff;
-  color: #31566e;
-  font-size: 12px;
-  padding: 10px;
+td{
+border-top:1px solid #dce6ee;
+padding:8px;
+text-align:center;
 }
 
-td {
-  border-top: 1px solid #dce6ee;
-  padding: 8px;
-  text-align: center;
+.name{
+font-weight:800;
+text-align:left;
+position:sticky;
+left:0;
+background:white;
+min-width:160px;
 }
 
-.name {
-  font-weight: 800;
-  text-align: left;
-  position: sticky;
-  left: 0;
-  background: white;
-  min-width: 160px;
+.time{
+background:white;
+border:1px solid #d7e5ee;
+color:#17435d;
+min-width:82px;
 }
 
-.time {
-  background: white;
-  border: 1px solid #d7e5ee;
-  color: #17435d;
-  min-width: 82px;
+.off{
+background:#f0f2f3;
+color:#89939a;
 }
 
-.off {
-  background: #f0f2f3;
-  color: #89939a;
+.actions button{
+padding:5px 7px;
+font-size:11px;
+background:#eaf6ff;
+color:#005ea8;
+margin-left:3px;
 }
 
-.actions button {
-  padding: 5px 7px;
-  font-size: 11px;
-  background: #eaf6ff;
-  color: #005ea8;
-  margin-left: 3px;
-}
-
-.empty {
-  padding: 30px;
-  color: #777;
+.empty{
+padding:30px;
+color:#777;
 }
 
 /* LOGIN */
-#loginScreen {
-  position: fixed;
-  inset: 0;
-  background: linear-gradient(135deg, #0077c8, #005ea8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  z-index: 5;
+
+#loginScreen{
+position:fixed;
+inset:0;
+background:linear-gradient(135deg,#0077c8,#005ea8);
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px;
+z-index:20;
 }
 
-.loginbox {
-  background: white;
-  padding: 24px;
-  border-radius: 20px;
-  width: 100%;
-  max-width: 400px;
+.loginbox{
+background:white;
+padding:24px;
+border-radius:20px;
+width:100%;
+max-width:400px;
 }
 
-.loginbox h2 {
-  margin: 0 0 5px;
+.loginbox h2{
+margin:0 0 5px;
 }
 
-.loginbox p {
-  color: #667;
+.loginbox p{
+color:#667;
 }
 
-input {
-  width: 100%;
-  padding: 13px;
-  margin: 6px 0;
-  border: 1px solid #ccd9e1;
-  border-radius: 10px;
-  font-size: 16px;
+input{
+width:100%;
+padding:13px;
+margin:6px 0;
+border:1px solid #ccd9e1;
+border-radius:10px;
+font-size:16px;
 }
 
-.loginbtn {
-  width: 100%;
-  background: #0077c8;
-  color: white;
-  margin-top: 8px;
+.loginbtn{
+width:100%;
+background:#0077c8;
+color:white;
+margin-top:8px;
 }
 
-#loginError {
-  color: #b42318;
-  font-size: 13px;
-  margin-top: 8px;
+#loginError{
+color:#b42318;
+font-size:13px;
+margin-top:8px;
 }
 
-/* SHIFT MODAL */
-.modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,36,60,0.55);
-  display: none;
-  align-items: flex-end;
-  z-index: 10;
+/* ROLE LABEL */
+
+.role{
+display:none;
+margin-top:10px;
+font-size:12px;
+background:rgba(255,255,255,.15);
+padding:6px 10px;
+border-radius:8px;
 }
 
-.sheet {
-  background: white;
-  width: 100%;
-  padding: 20px;
-  border-radius: 20px 20px 0 0;
+/* MODAL */
+
+.modal{
+position:fixed;
+inset:0;
+background:rgba(0,36,60,.55);
+display:none;
+align-items:flex-end;
+z-index:30;
 }
 
-.sheet h3 {
-  margin-top: 0;
+.sheet{
+background:white;
+width:100%;
+padding:20px;
+border-radius:20px 20px 0 0;
 }
 
-.row {
-  display: flex;
-  gap: 8px;
+.sheet h3{
+margin-top:0;
 }
 
-.row button {
-  flex: 1;
+.row{
+display:flex;
+gap:8px;
 }
 
-.blue {
-  background: #0077c8;
-  color: white;
+.row button{
+flex:1;
 }
 
-.gray {
-  background: #edf1f3;
+.blue{
+background:#0077c8;
+color:white;
 }
 
-@media (min-width: 700px) {
-  .modal {
-    align-items: center;
-  }
+.gray{
+background:#edf1f3;
+}
 
-  .sheet {
-    max-width: 430px;
-    margin: auto;
-    border-radius: 20px;
-  }
+@media(min-width:700px){
+
+.modal{
+align-items:center;
+}
+
+.sheet{
+max-width:430px;
+margin:auto;
+border-radius:20px;
+}
+
 }
 </style>
 </head>
 
 <body>
 
-<!-- LOGIN SCREEN -->
+<!-- LOGIN -->
+
 <div id="loginScreen">
 
-  <div class="loginbox">
+<div class="loginbox">
 
-    <h2>Blakehurst Car Wash</h2>
+<h2>Blakehurst Car Wash</h2>
 
-    <p>Staff Roster - Admin Login</p>
+<p>Staff Roster</p>
 
-    <input
-      id="emailInput"
-      type="email"
-      placeholder="Email"
-      autocomplete="username"
-    >
+<input
+id="loginId"
+type="text"
+placeholder="Staff ID or Email"
+autocomplete="username"
+>
 
-    <input
-      id="passwordInput"
-      type="password"
-      placeholder="Password"
-      autocomplete="current-password"
-    >
+<input
+id="loginPassword"
+type="password"
+placeholder="Password"
+autocomplete="current-password"
+>
 
-    <button id="loginButton" class="loginbtn">
-      Sign in
-    </button>
+<button
+id="loginButton"
+class="loginbtn">
+Sign in
+</button>
 
-    <div id="loginError"></div>
+<div id="loginError"></div>
 
-  </div>
+</div>
 
 </div>
 
 
 <!-- HEADER -->
+
 <header>
 
-  <h1>Blakehurst Car Wash</h1>
+<h1>Blakehurst Car Wash</h1>
 
-  <div class="sub">
-    Staff Roster
-  </div>
+<div class="sub">
+Staff Roster
+</div>
 
-  <div class="top">
+<div id="roleLabel" class="role"></div>
 
-    <button id="previousWeek" class="nav">
-      ‹
-    </button>
+<div class="top">
 
-    <div id="weekLabel" class="week">
-      Loading...
-    </div>
+<button id="previousWeek" class="nav">
+‹
+</button>
 
-    <button id="nextWeek" class="nav">
-      ›
-    </button>
+<div id="weekLabel" class="week">
+Loading...
+</div>
 
-  </div>
+<button id="nextWeek" class="nav">
+›
+</button>
 
-  <div>
+</div>
 
-    <button id="addStaffButton" class="add">
-      ＋ Add Staff
-    </button>
+<div id="adminControls">
 
-    <button id="logoutButton" class="logout">
-      Log out
-    </button>
+<button id="addStaffButton" class="add">
+＋ Add Staff
+</button>
 
-  </div>
+<button id="logoutButton" class="logout">
+Log out
+</button>
+
+</div>
+
+<div id="staffControls" style="display:none">
+
+<button id="staffLogoutButton" class="logout">
+Log out
+</button>
+
+</div>
 
 </header>
 
 
 <!-- ROSTER -->
+
 <main>
 
-  <div class="card">
+<div class="card">
 
-    <table id="rosterTable"></table>
+<table id="rosterTable"></table>
 
-  </div>
+</div>
 
 </main>
 
 
-<!-- SHIFT EDIT MODAL -->
+<!-- SHIFT MODAL -->
+
 <div id="shiftModal" class="modal">
 
-  <div class="sheet">
+<div class="sheet">
 
-    <h3 id="modalTitle">
-      Set shift
-    </h3>
+<h3 id="modalTitle">
+Set shift
+</h3>
 
-    <input
-      id="timeInput"
-      type="time"
-    >
+<input
+id="timeInput"
+type="time"
+>
 
-    <div class="row">
+<div class="row">
 
-      <button
-        id="cancelButton"
-        class="gray"
-      >
-        Cancel
-      </button>
+<button
+id="cancelButton"
+class="gray">
+Cancel
+</button>
 
-      <button
-        id="offButton"
-        class="gray"
-      >
-        OFF
-      </button>
+<button
+id="offButton"
+class="gray">
+OFF
+</button>
 
-      <button
-        id="saveTimeButton"
-        class="blue"
-      >
-        Save
-      </button>
+<button
+id="saveTimeButton"
+class="blue">
+Save
+</button>
 
-    </div>
+</div>
 
-  </div>
+</div>
 
 </div>
 
 
 <!-- FIREBASE -->
+
 <script src="https://www.gstatic.com/firebasejs/11.10.0/firebase-app-compat.js"></script>
 
 <script src="https://www.gstatic.com/firebasejs/11.10.0/firebase-auth-compat.js"></script>
@@ -386,860 +410,1039 @@ input {
 
 <script>
 
-/* ==============================
-   FIREBASE CONFIGURATION
-   ============================== */
+/* ============================
+   FIREBASE CONFIG
+   ============================ */
 
-const firebaseConfig = {
+const firebaseConfig={
 
-  apiKey: "AIzaSyCNnCJySpatR3p4cL7pT152cmSfUCEpREk",
+apiKey:"AIzaSyCNnCJySpatR3p4cL7pT152cmSfUCEpREk",
 
-  authDomain:
-    "blakehurst-car-wash.firebaseapp.com",
+authDomain:"blakehurst-car-wash.firebaseapp.com",
 
-  projectId:
-    "blakehurst-car-wash",
+projectId:"blakehurst-car-wash",
 
-  storageBucket:
-    "blakehurst-car-wash.firebasestorage.app",
+storageBucket:"blakehurst-car-wash.firebasestorage.app",
 
-  messagingSenderId:
-    "352439384369",
+messagingSenderId:"352439384369",
 
-  appId:
-    "1:352439384369:web:ad7dacc434b1793b365810"
+appId:"1:352439384369:web:ad7dacc434b1793b365810"
 
 };
 
-
-/* START FIREBASE */
 
 firebase.initializeApp(firebaseConfig);
 
-const auth = firebase.auth();
+const auth=firebase.auth();
 
-const db = firebase.firestore();
+const db=firebase.firestore();
 
-const rosterRef =
-  db.collection("roster").doc("main");
+const rosterRef=
+db.collection("roster").doc("main");
 
 
-/* ==============================
-   APPLICATION DATA
-   ============================== */
+/* ============================
+   STAFF LOGIN
+   ============================ */
 
-let startDate = getMonday(new Date());
+const STAFF_ID="staff";
 
-let rosterData = {
-  staff: []
+const STAFF_EMAIL=
+"staff@blakehurstcarwash.com";
+
+const STAFF_PASSWORD="Crystal";
+
+
+/*
+IMPORTANT:
+
+The Firebase staff account must have:
+
+Email:
+staff@blakehurstcarwash.com
+
+Password:
+Crystal
+*/
+
+
+/* ============================
+   APPLICATION STATE
+   ============================ */
+
+let startDate=
+getMonday(new Date());
+
+let rosterData={
+staff:[]
 };
 
-let currentShift = {
-  staffIndex: -1,
-  dateKey: ""
+let currentShift={
+staffIndex:-1,
+dateKey:""
 };
 
-
-/* ==============================
-   HTML ELEMENTS
-   ============================== */
-
-const loginScreen =
-  document.getElementById("loginScreen");
-
-const emailInput =
-  document.getElementById("emailInput");
-
-const passwordInput =
-  document.getElementById("passwordInput");
-
-const loginButton =
-  document.getElementById("loginButton");
-
-const loginError =
-  document.getElementById("loginError");
-
-const weekLabel =
-  document.getElementById("weekLabel");
-
-const rosterTable =
-  document.getElementById("rosterTable");
-
-const shiftModal =
-  document.getElementById("shiftModal");
-
-const modalTitle =
-  document.getElementById("modalTitle");
-
-const timeInput =
-  document.getElementById("timeInput");
+let currentRole="";
 
 
-/* ==============================
+/* ============================
+   ELEMENTS
+   ============================ */
+
+const loginScreen=
+document.getElementById("loginScreen");
+
+const loginId=
+document.getElementById("loginId");
+
+const loginPassword=
+document.getElementById("loginPassword");
+
+const loginButton=
+document.getElementById("loginButton");
+
+const loginError=
+document.getElementById("loginError");
+
+const weekLabel=
+document.getElementById("weekLabel");
+
+const rosterTable=
+document.getElementById("rosterTable");
+
+const shiftModal=
+document.getElementById("shiftModal");
+
+const modalTitle=
+document.getElementById("modalTitle");
+
+const timeInput=
+document.getElementById("timeInput");
+
+const adminControls=
+document.getElementById("adminControls");
+
+const staffControls=
+document.getElementById("staffControls");
+
+const roleLabel=
+document.getElementById("roleLabel");
+
+
+/* ============================
    DATE FUNCTIONS
-   ============================== */
+   ============================ */
 
-function getMonday(date) {
+function getMonday(date){
 
-  const d = new Date(date);
+const d=new Date(date);
 
-  d.setHours(0, 0, 0, 0);
+d.setHours(0,0,0,0);
 
-  const day = d.getDay();
+const day=d.getDay();
 
-  const difference =
-    (day + 6) % 7;
+const difference=(day+6)%7;
 
-  d.setDate(
-    d.getDate() - difference
-  );
+d.setDate(
+d.getDate()-difference
+);
 
-  return d;
+return d;
+
 }
 
 
-function getWeekDates() {
+function getWeekDates(){
 
-  const dates = [];
+const dates=[];
 
-  for (let i = 0; i < 7; i++) {
+for(let i=0;i<7;i++){
 
-    const d = new Date(startDate);
+const d=new Date(startDate);
 
-    d.setDate(
-      d.getDate() + i
-    );
+d.setDate(
+d.getDate()+i
+);
 
-    dates.push(d);
-  }
+dates.push(d);
 
-  return dates;
+}
+
+return dates;
+
 }
 
 
-function dateKey(date) {
+function dateKey(date){
 
-  const year =
-    date.getFullYear();
+const year=date.getFullYear();
 
-  const month =
-    String(date.getMonth() + 1)
-      .padStart(2, "0");
+const month=
+String(date.getMonth()+1)
+.padStart(2,"0");
 
-  const day =
-    String(date.getDate())
-      .padStart(2, "0");
+const day=
+String(date.getDate())
+.padStart(2,"0");
 
-  return `${year}-${month}-${day}`;
+return year+"-"+month+"-"+day;
+
 }
 
 
-/* ==============================
-   TIME DISPLAY
-   ============================== */
+/* ============================
+   TIME
+   ============================ */
 
-function formatTime(value) {
+function formatTime(value){
 
-  if (!value) {
-    return "OFF";
-  }
+if(!value){
+return "OFF";
+}
 
-  const parts =
-    value.split(":");
+const parts=value.split(":");
 
-  let hour =
-    Number(parts[0]);
+let hour=Number(parts[0]);
 
-  const minute =
-    parts[1];
+const minute=parts[1];
 
-  const suffix =
-    hour >= 12 ? "PM" : "AM";
+const suffix=
+hour>=12?"PM":"AM";
 
-  hour =
-    hour % 12 || 12;
+hour=hour%12||12;
 
-  return (
-    hour +
-    ":" +
-    minute +
-    " " +
-    suffix
-  );
+return hour+":"+minute+" "+suffix;
+
 }
 
 
-/* ==============================
+/* ============================
+   HTML ESCAPE
+   ============================ */
+
+function escapeHtml(text){
+
+return String(text)
+
+.replace(/&/g,"&amp;")
+
+.replace(/</g,"&lt;")
+
+.replace(/>/g,"&gt;")
+
+.replace(/"/g,"&quot;")
+
+.replace(/'/g,"&#039;");
+
+}
+
+
+/* ============================
    RENDER ROSTER
-   ============================== */
+   ============================ */
 
-function renderRoster() {
+function renderRoster(){
 
-  const dates =
-    getWeekDates();
+const dates=getWeekDates();
 
-  const firstDate =
-    dates[0];
+const firstDate=dates[0];
 
-  const lastDate =
-    dates[6];
+const lastDate=dates[6];
 
 
-  weekLabel.textContent =
-    firstDate.toLocaleDateString(
-      "en-AU",
-      {
-        day: "numeric",
-        month: "short"
-      }
-    ) +
-    " – " +
-    lastDate.toLocaleDateString(
-      "en-AU",
-      {
-        day: "numeric",
-        month: "short"
-      }
-    );
+weekLabel.textContent=
 
-
-  let html =
-    "<tr>";
-
-  html +=
-    "<th>Staff</th>";
-
-
-  dates.forEach(function(date) {
-
-    html +=
-      "<th>" +
-      date.toLocaleDateString(
-        "en-AU",
-        {
-          weekday: "short"
-        }
-      ) +
-      "<br>" +
-      date.getDate() +
-      "/" +
-      (date.getMonth() + 1) +
-      "</th>";
-
-  });
-
-
-  html += "</tr>";
-
-
-  if (
-    !rosterData.staff ||
-    rosterData.staff.length === 0
-  ) {
-
-    html +=
-      '<tr><td colspan="8" class="empty">' +
-      "No staff yet. Tap Add Staff." +
-      "</td></tr>";
-
-    rosterTable.innerHTML = html;
-
-    return;
-  }
-
-
-  rosterData.staff.forEach(
-    function(staff, staffIndex) {
-
-      html += "<tr>";
-
-      html +=
-        '<td class="name">' +
-        escapeHtml(staff.name) +
-        '<span class="actions">' +
-
-        '<button onclick="editStaffName(' +
-        staffIndex +
-        ')">Edit</button>' +
-
-        '<button onclick="removeStaff(' +
-        staffIndex +
-        ')">×</button>' +
-
-        "</span>" +
-        "</td>";
-
-
-      dates.forEach(function(date) {
-
-        const key =
-          dateKey(date);
-
-        const value =
-          staff.schedule &&
-          staff.schedule[key]
-            ? staff.schedule[key]
-            : "";
-
-
-        html +=
-          "<td>" +
-
-          '<button class="time ' +
-          (!value ? "off" : "") +
-          '" onclick="openShift(' +
-          staffIndex +
-          ",'" +
-          key +
-          "')\">" +
-
-          formatTime(value) +
-
-          "</button>" +
-
-          "</td>";
-
-      });
-
-
-      html += "</tr>";
-
-    }
-  );
-
-
-  rosterTable.innerHTML =
-    html;
+firstDate.toLocaleDateString(
+"en-AU",
+{
+day:"numeric",
+month:"short"
 }
+)
 
++" – "+
 
-/* ==============================
-   SECURITY / HTML ESCAPE
-   ============================== */
-
-function escapeHtml(text) {
-
-  return String(text)
-
-    .replace(/&/g, "&amp;")
-
-    .replace(/</g, "&lt;")
-
-    .replace(/>/g, "&gt;")
-
-    .replace(/"/g, "&quot;")
-
-    .replace(/'/g, "&#039;");
+lastDate.toLocaleDateString(
+"en-AU",
+{
+day:"numeric",
+month:"short"
 }
+);
 
 
-/* ==============================
-   LOAD DATA
-   ============================== */
+let html="<tr>";
 
-async function loadRoster() {
-
-  try {
-
-    const snapshot =
-      await rosterRef.get();
+html+="<th>Staff</th>";
 
 
-    if (snapshot.exists) {
+dates.forEach(function(date){
 
-      const savedData =
-        snapshot.data();
+html+=
+"<th>"+
 
-      rosterData = {
-        staff:
-          Array.isArray(savedData.staff)
-            ? savedData.staff
-            : []
-      };
+date.toLocaleDateString(
+"en-AU",
+{
+weekday:"short"
+}
+)
 
-    } else {
++"<br>"+
 
-      rosterData = {
-        staff: []
-      };
+date.getDate()+"/"+
 
-      await rosterRef.set(
-        rosterData
-      );
+(date.getMonth()+1)+
 
-    }
+"</th>";
+
+});
 
 
-    renderRoster();
+html+="</tr>";
 
-  } catch (error) {
 
-    console.error(
-      "Firestore error:",
-      error
-    );
+if(
+!rosterData.staff ||
+rosterData.staff.length===0
+){
 
-    loginError.textContent =
-      "Login worked, but the roster database could not be loaded.";
+html+=
+'<tr><td colspan="8" class="empty">'+
+"No staff yet. "+
+(
+currentRole==="admin"
+?"Tap Add Staff."
+:"No staff have been added."
+)+
+"</td></tr>";
 
-  }
+rosterTable.innerHTML=html;
+
+return;
 
 }
 
 
-/* ==============================
-   SAVE DATA
-   ============================== */
+/* STAFF ROWS */
 
-async function saveRoster() {
+rosterData.staff.forEach(
+function(staff,index){
 
-  try {
+html+="<tr>";
 
-    await rosterRef.set(
-      rosterData
-    );
+/* STAFF NAME */
 
-    renderRoster();
+html+=
+'<td class="name">'+
+escapeHtml(staff.name);
 
-  } catch (error) {
 
-    console.error(
-      "Save error:",
-      error
-    );
+/* ADMIN ONLY BUTTONS */
 
-    alert(
-      "Could not save the roster. Please check your internet connection."
-    );
+if(currentRole==="admin"){
 
-  }
+html+=
+'<span class="actions">'+
+
+'<button onclick="editStaffName('+
+index+
+')">Edit</button>'+
+
+'<button onclick="removeStaff('+
+index+
+')">×</button>'+
+
+"</span>";
 
 }
 
 
-/* ==============================
+html+="</td>";
+
+
+/* DAYS */
+
+dates.forEach(function(date){
+
+const key=dateKey(date);
+
+const value=
+staff.schedule &&
+staff.schedule[key]
+?staff.schedule[key]
+:"";
+
+
+if(currentRole==="admin"){
+
+/* ADMIN CAN EDIT */
+
+html+=
+"<td>"+
+
+'<button class="time '+
+(!value?"off":"")+
+'" onclick="openShift('+
+index+
+",'"+
+key+
+"')\">"+
+
+formatTime(value)+
+
+"</button>"+
+
+"</td>";
+
+}else{
+
+/* STAFF VIEW ONLY */
+
+html+=
+"<td>"+
+
+'<span class="time '+
+(!value?"off":"")+
+'" style="display:inline-block;padding:10px 8px;border-radius:10px;">'+
+
+formatTime(value)+
+
+"</span>"+
+
+"</td>";
+
+}
+
+});
+
+
+html+="</tr>";
+
+});
+
+
+rosterTable.innerHTML=html;
+
+}
+
+
+/* ============================
+   LOAD ROSTER
+   ============================ */
+
+async function loadRoster(){
+
+try{
+
+const snapshot=
+await rosterRef.get();
+
+
+if(snapshot.exists){
+
+const saved=snapshot.data();
+
+rosterData={
+
+staff:
+Array.isArray(saved.staff)
+?saved.staff
+:[]
+
+};
+
+}else{
+
+rosterData={
+staff:[]
+};
+
+if(currentRole==="admin"){
+
+await rosterRef.set(
+rosterData
+);
+
+}
+
+}
+
+
+renderRoster();
+
+}catch(error){
+
+console.error(
+"Firestore error:",
+error
+);
+
+loginError.textContent=
+"Database could not be loaded.";
+
+}
+
+}
+
+
+/* ============================
+   SAVE
+   ============================ */
+
+async function saveRoster(){
+
+if(currentRole!=="admin"){
+
+return;
+
+}
+
+
+try{
+
+await rosterRef.set(
+rosterData
+);
+
+renderRoster();
+
+}catch(error){
+
+console.error(
+"Save error:",
+error
+);
+
+alert(
+"Could not save the roster."
+);
+
+}
+
+}
+
+
+/* ============================
    LOGIN
-   ============================== */
+   ============================ */
 
-async function doLogin() {
+async function doLogin(){
 
-  loginError.textContent = "";
+loginError.textContent="";
 
-  const email =
-    emailInput.value.trim();
+const enteredId=
+loginId.value.trim();
 
-  const password =
-    passwordInput.value;
-
-
-  if (!email || !password) {
-
-    loginError.textContent =
-      "Please enter your email and password.";
-
-    return;
-  }
+const password=
+loginPassword.value;
 
 
-  loginButton.disabled = true;
+if(!enteredId || !password){
 
-  loginButton.textContent =
-    "Signing in...";
+loginError.textContent=
+"Please enter your Staff ID and password.";
 
-
-  try {
-
-    await auth.signInWithEmailAndPassword(
-      email,
-      password
-    );
-
-  } catch (error) {
-
-    console.error(
-      "Login error:",
-      error
-    );
-
-    loginError.textContent =
-      "Incorrect email or password.";
-
-    loginButton.disabled = false;
-
-    loginButton.textContent =
-      "Sign in";
-  }
+return;
 
 }
 
 
-/* ==============================
+loginButton.disabled=true;
+
+loginButton.textContent=
+"Signing in...";
+
+
+let email=enteredId;
+
+
+/*
+If user enters:
+
+staff
+
+convert it to:
+
+staff@blakehurstcarwash.com
+*/
+
+if(
+enteredId.toLowerCase()===
+STAFF_ID
+){
+
+email=STAFF_EMAIL;
+
+}
+
+
+try{
+
+await auth.signInWithEmailAndPassword(
+email,
+password
+);
+
+}catch(error){
+
+console.error(
+"Login error:",
+error
+);
+
+loginError.textContent=
+"Incorrect Staff ID/email or password.";
+
+loginButton.disabled=false;
+
+loginButton.textContent=
+"Sign in";
+
+}
+
+}
+
+
+/* ============================
    LOGOUT
-   ============================== */
+   ============================ */
 
-function logout() {
+function logout(){
 
-  auth.signOut();
+auth.signOut();
 
 }
 
 
-/* ==============================
+/* ============================
    ADD STAFF
-   ============================== */
+   ============================ */
 
-async function addStaff() {
+async function addStaff(){
 
-  const name =
-    prompt("Enter staff name:");
-
-
-  if (
-    name &&
-    name.trim()
-  ) {
-
-    rosterData.staff.push({
-
-      name:
-        name.trim(),
-
-      schedule: {}
-
-    });
+if(currentRole!=="admin"){
+return;
+}
 
 
-    await saveRoster();
+const name=
+prompt("Enter staff name:");
 
-  }
+
+if(name && name.trim()){
+
+rosterData.staff.push({
+
+name:name.trim(),
+
+schedule:{}
+
+});
+
+
+await saveRoster();
+
+}
 
 }
 
 
-/* ==============================
-   EDIT STAFF NAME
-   ============================== */
+/* ============================
+   EDIT STAFF
+   ============================ */
 
-async function editStaffName(index) {
+async function editStaffName(index){
 
-  const currentName =
-    rosterData.staff[index].name;
-
-
-  const newName =
-    prompt(
-      "Staff name:",
-      currentName
-    );
+if(currentRole!=="admin"){
+return;
+}
 
 
-  if (
-    newName &&
-    newName.trim()
-  ) {
+const currentName=
+rosterData.staff[index].name;
 
-    rosterData.staff[index].name =
-      newName.trim();
 
-    await saveRoster();
+const newName=
+prompt(
+"Staff name:",
+currentName
+);
 
-  }
+
+if(newName && newName.trim()){
+
+rosterData.staff[index].name=
+newName.trim();
+
+await saveRoster();
+
+}
 
 }
 
 
-/* ==============================
+/* ============================
    REMOVE STAFF
-   ============================== */
+   ============================ */
 
-async function removeStaff(index) {
+async function removeStaff(index){
 
-  const name =
-    rosterData.staff[index].name;
-
-
-  const confirmed =
-    confirm(
-      "Remove " +
-      name +
-      " from the roster?"
-    );
+if(currentRole!=="admin"){
+return;
+}
 
 
-  if (!confirmed) {
-    return;
-  }
+const name=
+rosterData.staff[index].name;
 
 
-  rosterData.staff.splice(
-    index,
-    1
-  );
+if(
+!confirm(
+"Remove "+name+" from the roster?"
+)
+){
 
-
-  await saveRoster();
+return;
 
 }
 
 
-/* ==============================
+rosterData.staff.splice(
+index,
+1
+);
+
+await saveRoster();
+
+}
+
+
+/* ============================
    OPEN SHIFT
-   ============================== */
+   ============================ */
 
-function openShift(
-  staffIndex,
-  key
-) {
+function openShift(index,key){
 
-  currentShift = {
-
-    staffIndex:
-      staffIndex,
-
-    dateKey:
-      key
-
-  };
+if(currentRole!=="admin"){
+return;
+}
 
 
-  const staff =
-    rosterData.staff[
-      staffIndex
-    ];
+currentShift={
+
+staffIndex:index,
+
+dateKey:key
+
+};
 
 
-  modalTitle.textContent =
-    staff.name +
-    " — " +
-    key;
+const staff=
+rosterData.staff[index];
 
 
-  const existingValue =
-    staff.schedule &&
-    staff.schedule[key]
-      ? staff.schedule[key]
-      : "";
+modalTitle.textContent=
+staff.name+" — "+key;
 
 
-  timeInput.value =
-    existingValue;
+const existing=
+staff.schedule &&
+staff.schedule[key]
+?staff.schedule[key]
+:"";
 
 
-  shiftModal.style.display =
-    "flex";
+timeInput.value=existing;
+
+shiftModal.style.display="flex";
 
 }
 
 
-/* ==============================
+/* ============================
    CLOSE MODAL
-   ============================== */
+   ============================ */
 
-function closeShiftModal() {
+function closeShiftModal(){
 
-  shiftModal.style.display =
-    "none";
-
-}
-
-
-/* ==============================
-   SAVE SHIFT
-   ============================== */
-
-async function saveTime() {
-
-  const value =
-    timeInput.value;
-
-
-  if (!value) {
-
-    alert(
-      "Please choose a time or select OFF."
-    );
-
-    return;
-  }
-
-
-  const staff =
-    rosterData.staff[
-      currentShift.staffIndex
-    ];
-
-
-  if (!staff.schedule) {
-
-    staff.schedule = {};
-
-  }
-
-
-  staff.schedule[
-    currentShift.dateKey
-  ] = value;
-
-
-  closeShiftModal();
-
-  await saveRoster();
+shiftModal.style.display="none";
 
 }
 
 
-/* ==============================
-   SET OFF
-   ============================== */
+/* ============================
+   SAVE TIME
+   ============================ */
 
-async function setOff() {
+async function saveTime(){
 
-  const staff =
-    rosterData.staff[
-      currentShift.staffIndex
-    ];
-
-
-  if (!staff.schedule) {
-
-    staff.schedule = {};
-
-  }
+if(currentRole!=="admin"){
+return;
+}
 
 
-  delete staff.schedule[
-    currentShift.dateKey
-  ];
+const value=
+timeInput.value;
 
 
-  closeShiftModal();
+if(!value){
 
-  await saveRoster();
+alert(
+"Please choose a time or select OFF."
+);
+
+return;
 
 }
 
 
-/* ==============================
-   CHANGE WEEK
-   ============================== */
+const staff=
+rosterData.staff[
+currentShift.staffIndex
+];
 
-function moveWeek(days) {
 
-  startDate.setDate(
-    startDate.getDate() +
-    days
-  );
+if(!staff.schedule){
 
-  renderRoster();
+staff.schedule={};
 
 }
 
 
-/* ==============================
-   BUTTON EVENTS
-   ============================== */
+staff.schedule[
+currentShift.dateKey
+]=value;
+
+
+closeShiftModal();
+
+await saveRoster();
+
+}
+
+
+/* ============================
+   OFF
+   ============================ */
+
+async function setOff(){
+
+if(currentRole!=="admin"){
+return;
+}
+
+
+const staff=
+rosterData.staff[
+currentShift.staffIndex
+];
+
+
+if(!staff.schedule){
+
+staff.schedule={};
+
+}
+
+
+delete staff.schedule[
+currentShift.dateKey
+];
+
+
+closeShiftModal();
+
+await saveRoster();
+
+}
+
+
+/* ============================
+   WEEK NAVIGATION
+   ============================ */
+
+function moveWeek(days){
+
+startDate.setDate(
+startDate.getDate()+days
+);
+
+renderRoster();
+
+}
+
+
+/* ============================
+   BUTTONS
+   ============================ */
+
+loginButton.addEventListener(
+"click",
+doLogin
+);
+
 
 document
-  .getElementById("loginButton")
-  .addEventListener(
-    "click",
-    doLogin
-  );
+.getElementById("logoutButton")
+.addEventListener(
+"click",
+logout
+);
 
 
 document
-  .getElementById("logoutButton")
-  .addEventListener(
-    "click",
-    logout
-  );
+.getElementById("staffLogoutButton")
+.addEventListener(
+"click",
+logout
+);
 
 
 document
-  .getElementById("addStaffButton")
-  .addEventListener(
-    "click",
-    addStaff
-  );
+.getElementById("addStaffButton")
+.addEventListener(
+"click",
+addStaff
+);
 
 
 document
-  .getElementById("previousWeek")
-  .addEventListener(
-    "click",
-    function() {
-      moveWeek(-7);
-    }
-  );
+.getElementById("previousWeek")
+.addEventListener(
+"click",
+function(){
+
+moveWeek(-7);
+
+}
+);
 
 
 document
-  .getElementById("nextWeek")
-  .addEventListener(
-    "click",
-    function() {
-      moveWeek(7);
-    }
-  );
+.getElementById("nextWeek")
+.addEventListener(
+"click",
+function(){
+
+moveWeek(7);
+
+}
+);
 
 
 document
-  .getElementById("cancelButton")
-  .addEventListener(
-    "click",
-    closeShiftModal
-  );
+.getElementById("cancelButton")
+.addEventListener(
+"click",
+closeShiftModal
+);
 
 
 document
-  .getElementById("offButton")
-  .addEventListener(
-    "click",
-    setOff
-  );
+.getElementById("offButton")
+.addEventListener(
+"click",
+setOff
+);
 
 
 document
-  .getElementById("saveTimeButton")
-  .addEventListener(
-    "click",
-    saveTime
-  );
+.getElementById("saveTimeButton")
+.addEventListener(
+"click",
+saveTime
+);
 
 
-/* ==============================
-   FIREBASE AUTH STATE
-   ============================== */
+/* ============================
+   AUTH STATE
+   ============================ */
 
 auth.onAuthStateChanged(
-  async function(user) {
+async function(user){
 
-    if (user) {
+if(user){
 
-      loginScreen.style.display =
-        "none";
+/*
+Determine user role
+*/
 
-      loginError.textContent = "";
+if(
+user.email.toLowerCase()===
+STAFF_EMAIL.toLowerCase()
+){
 
-      await loadRoster();
+currentRole="staff";
 
-    } else {
+}else{
 
-      loginScreen.style.display =
-        "flex";
+currentRole="admin";
 
-      loginButton.disabled =
-        false;
+}
 
-      loginButton.textContent =
-        "Sign in";
 
-      renderRoster();
+/* Hide login */
 
-    }
+loginScreen.style.display="none";
 
-  }
-);
+
+/* Show correct controls */
+
+if(currentRole==="admin"){
+
+adminControls.style.display="block";
+
+staffControls.style.display="none";
+
+roleLabel.style.display="inline-block";
+
+roleLabel.textContent=
+"Administrator — Full Access";
+
+}else{
+
+adminControls.style.display="none";
+
+staffControls.style.display="block";
+
+roleLabel.style.display="inline-block";
+
+roleLabel.textContent=
+"Staff — View Only";
+
+}
+
+
+/* Load roster */
+
+await loadRoster();
+
+
+}else{
+
+currentRole="";
+
+loginScreen.style.display="flex";
+
+adminControls.style.display="none";
+
+staffControls.style.display="none";
+
+roleLabel.style.display="none";
+
+loginButton.disabled=false;
+
+loginButton.textContent="Sign in";
+
+}
+
+});
+
+
+/* Initial display */
+
+renderRoster();
 
 </script>
 
